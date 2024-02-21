@@ -42,9 +42,12 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:8082/api/oauth/token",
+									"raw": "96.61.158.12:8082/api/oauth/token",
 									"host": [
-										"localhost"
+										"96",
+										"61",
+										"158",
+										"12"
 									],
 									"port": "8082",
 									"path": [
@@ -77,9 +80,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8082/api/user",
+									"raw": "96.61.158.12:8082/api/user",
 									"host": [
-										"localhost"
+										"96",
+										"61",
+										"158",
+										"12"
 									],
 									"port": "8082",
 									"path": [
@@ -116,11 +122,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/protocol",
+									"raw": "96.61.158.12:8083/api/protocol",
 									"host": [
-										"localhost"
+										"96",
+										"61",
+										"158",
+										"12"
 									],
-									"port": "8080",
+									"port": "8083",
 									"path": [
 										"api",
 										"protocol"
@@ -145,11 +154,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/protocol/1",
+									"raw": "96.61.158.12:8083/api/protocol/1",
 									"host": [
-										"localhost"
+										"96",
+										"61",
+										"158",
+										"12"
 									],
-									"port": "8080",
+									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
