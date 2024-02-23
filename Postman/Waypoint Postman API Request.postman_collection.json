@@ -11,7 +11,7 @@
 			"name": "Authorization API",
 			"item": [
 				{
-					"name": "Login",
+					"name": "OAuth2",
 					"item": [
 						{
 							"name": "Login",
@@ -34,7 +34,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"username\": \"test_username\",\r\n    \"password\": \"password\"\r\n}",
+									"raw": "{\r\n    \"username\": \"test_admin\",\r\n    \"password\": \"password\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -42,12 +42,10 @@
 									}
 								},
 								"url": {
-									"raw": "96.61.158.12:8082/api/oauth/token",
+									"raw": "http://{{server}}:8082/api/oauth/token",
+									"protocol": "http",
 									"host": [
-										"96",
-										"61",
-										"158",
-										"12"
+										"{{server}}"
 									],
 									"port": "8082",
 									"path": [
@@ -58,14 +56,9 @@
 								}
 							},
 							"response": []
-						}
-					]
-				},
-				{
-					"name": "User",
-					"item": [
+						},
 						{
-							"name": "Get User",
+							"name": "Get User Info",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -80,17 +73,125 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "96.61.158.12:8082/api/user",
+									"raw": "http://{{server}}:8082/api/oauth/me",
+									"protocol": "http",
 									"host": [
-										"96",
-										"61",
-										"158",
-										"12"
+										"{{server}}"
 									],
 									"port": "8082",
 									"path": [
 										"api",
-										"user"
+										"oauth",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Account",
+					"item": [
+						{
+							"name": "Get All Accounts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8082/api/account",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Account",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"test_newAdmin\",\r\n  \"firstName\": \"Admin\",\r\n  \"lastName\": \"User\",\r\n  \"roleIds\": [\r\n    4\r\n  ],\r\n  \"email\": \"no@no.com\",\r\n  \"password\": \"Test@dm!nU53r\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{server}}:8082/api/account",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"account"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Role",
+					"item": [
+						{
+							"name": "Get All Roles",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8082/api/role",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"role"
 									]
 								}
 							},
