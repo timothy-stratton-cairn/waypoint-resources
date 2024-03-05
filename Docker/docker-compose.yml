@@ -1,14 +1,42 @@
 version: '3'
 
 services:
-    mysql-db:
+    database:
         image: mysql:8.0
-        container_name: mysql-db
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        volumes:
+            - ./docker/provision/mysql/init:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_ROOT_PASSWORD: local
         ports:
             - "3306:3306"
+    authorization-api:
+        build:
+            context: ../../waypoint-authorization-api
+            dockerfile: Dockerfile
+        ports:
+            - "8082:8080"
         environment:
-            MYSQL_ROOT_PASSWORD:
-            MYSQL_USER: sa
-            MYSQL_PASSWORD: sa
-            MYSQL_ROOT_HOST: '%'
-            MYSQL_ALLOW_EMPTY_PASSWORD: true
+            - SPRING_PROFILES_ACTIVE=default
+            - APP_BASE_URL=http://host.docker.internal:8082
+            - DB_URL=jdbc:mysql://database:3306/authorization-db?useSSL=false
+            - DB_USERNAME=docker
+            - DB_PASSWORD=
+        depends_on:
+            - database
+    dashboard-api:
+        build:
+            context: ../../waypoint-dashboard-api
+            dockerfile: Dockerfile
+        ports:
+            - "8083:8080"
+        environment:
+            - SPRING_PROFILES_ACTIVE=default
+            - APP_BASE_URL=http://host.docker.internal:8083
+            - DB_URL=jdbc:mysql://database:3306/dashboard-db?useSSL=false
+            - DB_USERNAME=docker
+            - DB_PASSWORD=
+            - AUTH_API_ISSUER_URL=http://host.docker.internal:8082
+        depends_on:
+            - database
+            - authorization-api
