@@ -124,6 +124,37 @@
 							"response": []
 						},
 						{
+							"name": "Get Account By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8082/api/account/2",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"account",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Add Account",
 							"request": {
 								"auth": {
@@ -223,12 +254,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "96.61.158.12:8083/api/protocol",
+									"raw": "{{server}}:8083/api/protocol",
 									"host": [
-										"96",
-										"61",
-										"158",
-										"12"
+										"{{server}}"
 									],
 									"port": "8083",
 									"path": [
@@ -255,18 +283,497 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "96.61.158.12:8083/api/protocol/1",
+									"raw": "{{server}}:8083/api/protocol/1",
 									"host": [
-										"96",
-										"61",
-										"158",
-										"12"
+										"{{server}}"
 									],
 									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
 										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Protocols for Account ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/protocol/account/2",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol",
+										"account",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Protocol",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"protocolTemplateId\": 3,\r\n    \"comment\": \"This is a test\",\r\n    \"associatedAccountId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/protocol",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Protocol Template",
+					"item": [
+						{
+							"name": "Get All Protocol Templates",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-template",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-template"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Protocol Template",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"protocol-template-1\",\r\n  \"description\": \"protocol-template-1\",\r\n  \"associatedStepTemplateIds\": [5,1,2]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-template",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-template"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Protocol Template",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"protocol-template-1-updated\",\r\n  \"description\": \"protocol-template-1-updated\",\r\n  \"associatedStepTemplateIds\": [5,4,3,2,1]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-template/3",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-template",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Append Step Template to Protocol Template",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-template/3/19",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-template",
+										"3",
+										"19"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Protocol Template By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-template/3",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-template",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Protocol Step Templates",
+					"item": [
+						{
+							"name": "Get All Protocol Step Templates",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-step-template",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-step-template"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Protocol Step Template",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"protocol-step-template-1\",\r\n  \"description\": \"protocol-step-template-1\",\r\n  \"linkedStepTaskId\": null,\r\n  \"linkedHomeworkTemplateId\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-step-template",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-step-template"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Protocol Step Template",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"protocol-step-template-1-updated\",\r\n  \"description\": \"protocol-step-template-1-updated\",\r\n  \"linkedStepTaskId\": null,\r\n  \"linkedHomeworkTemplateId\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-step-template/1",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-step-template",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Protocol Step Template By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-step-template/1",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-step-template",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ops",
+					"item": [
+						{
+							"name": "Take Snapshot of DB",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8083/ops/snapshot-database",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"ops",
+										"snapshot-database"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset the DB Liquibase",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8083/ops/reset-database",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"ops",
+										"reset-database"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Prime the DB with Test Data",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8083/ops/prime-database",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"ops",
+										"prime-database"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Protocol Step Template Category",
+					"item": [
+						{
+							"name": "Get All Step Template Categories",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8083/api/protocol-step-template-category",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-step-template-category"
 									]
 								}
 							},
