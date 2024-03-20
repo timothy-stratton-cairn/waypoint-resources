@@ -529,6 +529,46 @@
 							"response": []
 						},
 						{
+							"name": "Append Protocol Commentary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\": \"This is a test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/protocol/3/comment",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol",
+										"3",
+										"comment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Update Protocol",
 							"request": {
 								"auth": {
@@ -545,7 +585,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"comment\": \"This is a test update again\",\r\n    \"markForAttention\": true,\r\n    \"protocolSteps\": [\r\n        {\r\n            \"id\": 1,\r\n            \"notes\": \"testing update again\",\r\n            \"status\": \"DONE\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"notes\": \"testing update again\",\r\n            \"status\": \"IN_PROGRESS\"\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"comment\": \"This is a test update again\",\r\n    \"markForAttention\": true,\r\n    \"protocolSteps\": [\r\n        {\r\n            \"id\": 2,\r\n            \"notes\": \"testing update again\",\r\n            \"status\": \"IN_PROGRESS\"\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"notes\": \"testing update again\",\r\n            \"status\": \"TODO\"\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -562,6 +602,53 @@
 										"api",
 										"protocol",
 										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Protocol Step",
+					"item": [
+						{
+							"name": "Append Protocol Step Note",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"note\": \"This is a test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/protocol/3/protocol-step/1/note",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol",
+										"3",
+										"protocol-step",
+										"1",
+										"note"
 									]
 								}
 							},
