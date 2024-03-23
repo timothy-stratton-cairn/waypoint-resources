@@ -653,6 +653,48 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Update Protocol Step Status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"IN_PROGRESS\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/protocol/3/protocol-step/1/status",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol",
+										"3",
+										"protocol-step",
+										"1",
+										"status"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -689,6 +731,37 @@
 							"response": []
 						},
 						{
+							"name": "Get All Protocol Step Templates By Template Category ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/protocol-step-template/template-category/1",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-step-template",
+										"template-category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Create Protocol Step Template",
 							"request": {
 								"auth": {
@@ -705,7 +778,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"protocol-step-template-1\",\r\n  \"description\": \"protocol-step-template-1\",\r\n  \"linkedStepTaskId\": null,\r\n  \"linkedHomeworkTemplateId\": null\r\n}",
+									"raw": "{\r\n  \"name\": \"protocol-step-template-1\",\r\n  \"description\": \"protocol-step-template-1\",\r\n  \"linkedStepTaskId\": null,\r\n  \"linkedHomeworkTemplateId\": null,\r\n  \"stepTemplateCategoryId\": 0\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -825,6 +898,38 @@
 									"path": [
 										"api",
 										"protocol-step-template-category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Step Template Categories By Parent Category ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8083/api/protocol-step-template-category/1/children",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"protocol-step-template-category",
+										"1",
+										"children"
 									]
 								}
 							},
