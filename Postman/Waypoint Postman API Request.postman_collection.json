@@ -124,6 +124,87 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Reset Account Password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\": \"password\",\r\n    \"newPassword\": \"ThisP@ssword!5S3cur3!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{server}}:8082/api/account/5/reset-password",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"account",
+										"5",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Account",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Firstname\",\r\n    \"lastName\": \"Lastname\",\r\n    \"roleIds\": [\r\n        123\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{server}}:8082/api/account/2",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"account",
+										"2"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1492,14 +1573,82 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/homework-template",
+									"raw": "{{server}}:8083/api/homework-template/1",
 									"host": [
 										"{{server}}"
 									],
 									"port": "8083",
 									"path": [
 										"api",
-										"homework-template"
+										"homework-template",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Homework",
+					"item": [
+						{
+							"name": "Get All Homework By Protocol ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/homework/protocol/22",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"homework",
+										"protocol",
+										"22"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Homework By Account ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/homework/protocol/22",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"homework",
+										"protocol",
+										"22"
 									]
 								}
 							},
