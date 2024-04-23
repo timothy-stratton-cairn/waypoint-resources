@@ -183,7 +183,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Firstname\",\r\n    \"lastName\": \"Lastname\",\r\n    \"roleIds\": [\r\n        123\r\n    ]\r\n}",
+									"raw": "{\r\n    \"firstName\": \"Firstname\",\r\n    \"lastName\": \"Lastname\",\r\n    \"roleIds\": [\r\n        2, 3, 4\r\n    ],\r\n    \"email\": \"test@test.com\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -383,13 +383,14 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/ops/snapshot-database",
+									"raw": "http://{{server}}:8083/api/ops/snapshot-database",
 									"protocol": "http",
 									"host": [
 										"{{server}}"
 									],
 									"port": "8083",
 									"path": [
+										"api",
 										"ops",
 										"snapshot-database"
 									]
@@ -413,13 +414,14 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/ops/reset-database",
+									"raw": "http://{{server}}:8083/api/ops/reset-database",
 									"protocol": "http",
 									"host": [
 										"{{server}}"
 									],
 									"port": "8083",
 									"path": [
+										"api",
 										"ops",
 										"reset-database"
 									]
@@ -443,15 +445,57 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/ops/prime-database",
+									"raw": "http://{{server}}:8083/api/ops/prime-database",
 									"protocol": "http",
 									"host": [
 										"{{server}}"
 									],
 									"port": "8083",
 									"path": [
+										"api",
 										"ops",
 										"prime-database"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Import Data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/stratton_dev/Downloads/Waypoints_Data_Import_Template.xlsx"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://{{server}}:8083/api/ops/import-data",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"ops",
+										"import-data"
 									]
 								}
 							},
@@ -1608,7 +1652,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/homework/protocol/22",
+									"raw": "{{server}}:8083/api/homework/protocol/3",
 									"host": [
 										"{{server}}"
 									],
@@ -1617,11 +1661,287 @@
 										"api",
 										"homework",
 										"protocol",
-										"22"
+										"3"
 									]
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Homework By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}:8083/api/homework/1",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"homework",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Homework Responses",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"responses\": [\r\n        {\r\n            \"questionId\": 1,\r\n            \"userResponse\": \"123 test\"\r\n        },\r\n        {\r\n            \"questionId\": 2,\r\n            \"userResponse\": \"456 test\"\r\n        },\r\n        {\r\n            \"questionId\": 3,\r\n            \"userResponse\": \"NAshville\"\r\n        },\r\n        {\r\n            \"questionId\": 4,\r\n            \"userResponse\": null\r\n        },\r\n        {\r\n            \"questionId\": 5,\r\n            \"userResponse\": \"123 State Drive\"\r\n        },\r\n        {\r\n            \"questionId\": 6,\r\n            \"userResponse\": \"Test Inc\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}:8083/api/homework/1",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"homework",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Simple String Submission",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "files",
+													"type": "file",
+													"src": []
+												},
+												{
+													"key": "json",
+													"value": "{\n  \"responses\": [\n        {\n            \"questionId\": 1,\n            \"userResponse\": \"123 test\"\n        },\n        {\n            \"questionId\": 2,\n            \"userResponse\": \"456 test\"\n        },\n        {\n            \"questionId\": 3,\n            \"userResponse\": \"NAshville\"\n        },\n        {\n            \"questionId\": 4,\n            \"userResponse\": null\n        },\n        {\n            \"questionId\": 5,\n            \"userResponse\": \"123 State Drive\"\n        },\n        {\n            \"questionId\": 6,\n            \"userResponse\": \"Test Inc\"\n        }\n    ]\n}\n",
+													"contentType": "application/json",
+													"type": "text"
+												}
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}:8083/api/homework/4",
+											"host": [
+												"{{server}}"
+											],
+											"port": "8083",
+											"path": [
+												"api",
+												"homework",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "63"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 02:56:30 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Homework with ID [1] and name [Employment] updated successfully"
+								},
+								{
+									"name": "Upload File with Json Body",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "files",
+													"type": "file",
+													"src": "/C:/Users/stratton_dev/Downloads/What-Does-it-Mean-if-My-Drivers-License-is-On-Hold-in-Illinois.jpg"
+												},
+												{
+													"key": "json",
+													"value": "{\n  \"responses\": [\n        {\n            \"questionId\": 8,\n            \"userResponse\": \"What-Does-it-Mean-if-My-Drivers-License-is-On-Hold-in-Illinois.jpg\"\n        }\n    ]\n}",
+													"contentType": "application/json",
+													"type": "text"
+												}
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{server}}:8083/api/homework/2",
+											"host": [
+												"{{server}}"
+											],
+											"port": "8083",
+											"path": [
+												"api",
+												"homework",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "69"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 05:20:29 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Homework with ID [2] and name [Driver's License] updated successfully"
+								}
+							]
 						},
 						{
 							"name": "Get All Homework By Account ID",
@@ -1639,7 +1959,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/homework/protocol/22",
+									"raw": "{{server}}:8083/api/homework/account/9",
 									"host": [
 										"{{server}}"
 									],
@@ -1647,8 +1967,35 @@
 									"path": [
 										"api",
 										"homework",
-										"protocol",
-										"22"
+										"account",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Download File",
+					"item": [
+						{
+							"name": "Download Homework Response File",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{server}}:8083/api/file/homework-response/012de4a5-88ec-4286-84d3-81e836ed5a93",
+									"protocol": "http",
+									"host": [
+										"{{server}}"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"file",
+										"homework-response",
+										"012de4a5-88ec-4286-84d3-81e836ed5a93"
 									]
 								}
 							},
