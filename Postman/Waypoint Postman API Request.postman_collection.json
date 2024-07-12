@@ -29,12 +29,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8082/api/account",
-									"protocol": "http",
+									"raw": "{{authorization-api}}/api/account",
 									"host": [
-										"{{server}}"
+										"{{authorization-api}}"
 									],
-									"port": "8082",
 									"path": [
 										"api",
 										"account"
@@ -71,12 +69,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8082/api/account/2",
-									"protocol": "http",
+									"raw": "{{authorization-api}}/api/account/2",
 									"host": [
-										"{{server}}"
+										"{{authorization-api}}"
 									],
-									"port": "8082",
 									"path": [
 										"api",
 										"account",
@@ -103,7 +99,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"username\": \"test_newAdmin\",\r\n  \"firstName\": \"Admin\",\r\n  \"lastName\": \"User\",\r\n  \"roleIds\": [\r\n    4\r\n  ],\r\n  \"email\": \"no@no.com\",\r\n  \"password\": \"Test@dm!nU53r\"\r\n}",
+									"raw": "{\r\n  \"username\": \"test_newAdmin_2\",\r\n  \"firstName\": \"Admin\",\r\n  \"lastName\": \"User\",\r\n  \"roleIds\": [\r\n    4\r\n  ],\r\n  \"email\": \"no@no.com\",\r\n  \"password\": \"Test@dm!nU53r\",\r\n  \"coClientId\": null,\r\n  \"dependentIds\": []\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -111,12 +107,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://{{server}}:8082/api/account",
-									"protocol": "http",
+									"raw": "{{authorization-api}}/api/account",
 									"host": [
-										"{{server}}"
+										"{{authorization-api}}"
 									],
-									"port": "8082",
 									"path": [
 										"api",
 										"account"
@@ -150,12 +144,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://{{server}}:8082/api/account/5/reset-password",
-									"protocol": "http",
+									"raw": "{{authorization-api}}/api/account/5/reset-password",
 									"host": [
-										"{{server}}"
+										"{{authorization-api}}"
 									],
-									"port": "8082",
 									"path": [
 										"api",
 										"account",
@@ -183,7 +175,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Firstname\",\r\n    \"lastName\": \"Lastname\",\r\n    \"roleIds\": [\r\n        2, 3, 4\r\n    ],\r\n    \"email\": \"test@test.com\"\r\n}",
+									"raw": "{\r\n  \"firstName\": \"Admin\",\r\n  \"lastName\": \"User\",\r\n  \"roleIds\": [\r\n    4\r\n  ],\r\n  \"email\": \"no@no.com\",\r\n  \"password\": \"Test@dm!nU53r\",\r\n  \"coClientId\": null,\r\n  \"dependentIds\": []\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -191,16 +183,73 @@
 									}
 								},
 								"url": {
-									"raw": "http://{{server}}:8082/api/account/2",
-									"protocol": "http",
+									"raw": "{{authorization-api}}/api/account/11",
 									"host": [
-										"{{server}}"
+										"{{authorization-api}}"
 									],
-									"port": "8082",
 									"path": [
 										"api",
 										"account",
-										"2"
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password For Account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{authorization-api}}/api/account/password/reset?username=test_newAdmin_3&email=tim@cairnfg.com",
+									"host": [
+										"{{authorization-api}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"password",
+										"reset"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test_newAdmin_3"
+										},
+										{
+											"key": "email",
+											"value": "tim@cairnfg.com"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Complete Password Reset",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"test_newAdmin_3\",\r\n  \"passwordResetToken\": \"wgmdb3UV4ddXJ3IYhvJH\",\r\n  \"newPassword\": \"Tlotrap2d.2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{authorization-api}}/api/account/password/reset",
+									"host": [
+										"{{authorization-api}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"password",
+										"reset"
 									]
 								}
 							},
@@ -241,12 +290,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://{{server}}:8082/api/oauth/token",
-									"protocol": "http",
+									"raw": "{{authorization-api}}/api/oauth/token",
 									"host": [
-										"{{server}}"
+										"{{authorization-api}}"
 									],
-									"port": "8082",
 									"path": [
 										"api",
 										"oauth",
@@ -272,12 +319,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8082/api/oauth/me",
-									"protocol": "http",
+									"raw": "{{authorization-api}}/api/oauth/me",
 									"host": [
-										"{{server}}"
+										"{{authorization-api}}"
 									],
-									"port": "8082",
 									"path": [
 										"api",
 										"oauth",
@@ -308,15 +353,150 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8082/api/role",
-									"protocol": "http",
+									"raw": "{{authorization-api}}/api/role",
 									"host": [
-										"{{server}}"
+										"{{authorization-api}}"
 									],
-									"port": "8082",
 									"path": [
 										"api",
 										"role"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Household",
+					"item": [
+						{
+							"name": "Get All Households",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{authorization-api}}/api/household",
+									"host": [
+										"{{authorization-api}}"
+									],
+									"path": [
+										"api",
+										"household"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Household By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{authorization-api}}/api/household/1",
+									"host": [
+										"{{authorization-api}}"
+									],
+									"path": [
+										"api",
+										"household",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Household",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Updated Household Name\",\r\n    \"description\": \"Updated Household Description\",\r\n    \"primaryContactAccountIds\": [2],\r\n    \"householdAccountIds\": [2, 3, 4]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{authorization-api}}/api/household/1",
+									"host": [
+										"{{authorization-api}}"
+									],
+									"path": [
+										"api",
+										"household",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Household",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Stratton Household\",\r\n    \"description\": \"Stratton Household\",\r\n    \"primaryContactAccountIds\": [18, 19],\r\n    \"householdAccountIds\": [18, 19]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{authorization-api}}/api/household",
+									"host": [
+										"{{authorization-api}}"
+									],
+									"path": [
+										"api",
+										"household"
 									]
 								}
 							},
@@ -348,11 +528,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/dashboard/protocol",
+									"raw": "{{dashboard-api}}/api/dashboard/protocol",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"dashboard",
@@ -383,12 +562,10 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/api/ops/snapshot-database",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/ops/snapshot-database",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"ops",
@@ -414,12 +591,10 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/api/ops/reset-database",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/ops/reset-database",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"ops",
@@ -445,12 +620,10 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/api/ops/prime-database",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/ops/prime-database",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"ops",
@@ -486,16 +659,43 @@
 									]
 								},
 								"url": {
-									"raw": "http://{{server}}:8083/api/ops/import-data",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/ops/import-data",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"ops",
 										"import-data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trigger Scheduled Protocols Job",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiJ0ZXN0X2FkbWluIiwiYXVkIjoidGVzdF9hZG1pbiIsIm5iZiI6MTcxOTU4ODUxMywic2NvcGUiOiJhZG1pbi5mdWxsIiwiaXNzIjoiaHR0cDovLzE4LjIzNC4yNDIuMTA0OjgwODAiLCJncm91cHMiOlsiQURNSU4iXSwiZXhwIjoxNzE5NTkyMTEzLCJpYXQiOjE3MTk1ODg1MTMsImp0aSI6ImJhMWIzNGI1LTAwMTEtNGU1MC04MTgwLTgxYTBiNzYzNzY5YyJ9.LCzS_4xzgVBGYav8Q_4khjfLjlzsQhadO2s5D7zc1nt-nkVWxbB_uQv0NM94y1fic8MDX-VOOAY3oji3yHdZDBUJVw85N8_otq0FurXAEQTG40AepI07r73-5WN77UusItokLXTBIXdCMDrs9KSCZbyYix4WuTIItlnmai6IXb3Xlz78f1nqTQLQnsokadecdLd78l_6uuYcVKZB_NYaBo3Mxe44eH59fvTDtcGf4M8Wuv9T-tTs_VsTpZ_CJSW9evmSb9klNLCEMFfztb4BNA28_c2KsLORcPuXBQUelfjTVuCie355P8m5lEI_x0gsSW9muXcNcMj1tiLULaY_GQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/ops/trigger-scheduled-protocols",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"ops",
+										"trigger-scheduled-protocols"
 									]
 								}
 							},
@@ -522,14 +722,48 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol",
+									"raw": "{{dashboard-api}}/api/protocol",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Upcoming Protocols",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol/upcoming?limitingDate=2024-07-17",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol",
+										"upcoming"
+									],
+									"query": [
+										{
+											"key": "limitingDate",
+											"value": "2024-07-17"
+										}
 									]
 								}
 							},
@@ -551,11 +785,39 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol/3",
+									"raw": "{{dashboard-api}}/api/protocol/3",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
+									"path": [
+										"api",
+										"protocol",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate Protocol By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol/3",
+									"host": [
+										"{{dashboard-api}}"
+									],
 									"path": [
 										"api",
 										"protocol",
@@ -581,11 +843,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol/protocol-template/3",
+									"raw": "{{dashboard-api}}/api/protocol/protocol-template/3",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
@@ -612,11 +873,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol/account/2",
+									"raw": "{{dashboard-api}}/api/protocol/account/2",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
@@ -643,11 +903,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol/account/protocol-template/4",
+									"raw": "{{dashboard-api}}/api/protocol/account/protocol-template/4",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
@@ -676,7 +935,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"protocolTemplateId\": 4,\r\n    \"goal\": \"This is a goal\",\r\n    \"comment\": \"This is a test\",\r\n    \"associatedAccountId\": 2,\r\n    \"dueDate\": \"2025-01-01\"\r\n}",
+									"raw": "{\r\n    \"protocolTemplateId\": 188,\r\n    \"goal\": \"This is a goal\",\r\n    \"comment\": \"This is a test\",\r\n    \"commentType\": \"RECOMMENDATION\",\r\n    \"assignedHouseholdId\": 65,\r\n    \"dueDate\": \"2025-01-01\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -684,11 +943,10 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol",
+									"raw": "{{dashboard-api}}/api/protocol",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol"
@@ -722,16 +980,55 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol/6/comment",
+									"raw": "{{dashboard-api}}/api/protocol/6/comment",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
 										"6",
 										"comment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate Protocol Comment By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n    \"goalProgress\": \"testing deprecation again\",\r\n    \"comment\": \"testing commentary\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol/3/comment/20",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol",
+										"3",
+										"comment",
+										"20"
 									]
 								}
 							},
@@ -762,15 +1059,121 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol/3",
+									"raw": "{{dashboard-api}}/api/protocol/3",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
 										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Protocol Status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"newProtocolStatus\": \"COMPLETED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol/3/status",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol",
+										"3",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Protocol Status",
+					"item": [
+						{
+							"name": "Get All Protocol Statuses",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol/status",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Protocol Comment Type",
+					"item": [
+						{
+							"name": "Get All Protocol Comment Types",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol/comment-type",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol",
+										"comment-type"
 									]
 								}
 							},
@@ -806,11 +1209,10 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol/3/protocol-step/1/note",
+									"raw": "{{dashboard-api}}/api/protocol/3/protocol-step/1/note",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
@@ -848,17 +1250,92 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol/3/protocol-step/1/status",
+									"raw": "{{dashboard-api}}/api/protocol/3/protocol-step/1/status",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol",
 										"3",
 										"protocol-step",
 										"1",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach File To Protocol Step",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1ef013ae-0a4e-4a90-bec3-eafc3226c770"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol/3/protocol-step/1/attachment",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol",
+										"3",
+										"protocol-step",
+										"1",
+										"attachment"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Protocol Step Status",
+					"item": [
+						{
+							"name": "Get All Step Statuses",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol-step/status",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol-step",
 										"status"
 									]
 								}
@@ -886,11 +1363,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-step-template",
+									"raw": "{{dashboard-api}}/api/protocol-step-template",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-step-template"
@@ -915,11 +1391,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-step-template/template-category/1",
+									"raw": "{{dashboard-api}}/api/protocol-step-template/template-category/1",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-step-template",
@@ -955,11 +1430,10 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-step-template",
+									"raw": "{{dashboard-api}}/api/protocol-step-template",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-step-template"
@@ -985,7 +1459,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"protocol-step-template-1-updated\",\r\n  \"description\": \"protocol-step-template-1-updated\",\r\n  \"linkedStepTaskId\": null,\r\n  \"linkedHomeworkTemplateIds\": [8]\r\n}",
+									"raw": "{\r\n    \"name\": \"Send New Client Homework\",\r\n    \"description\": \"Send a New Client the requisite homework to onboard\",\r\n    \"linkedStepTaskId\": null,\r\n    \"linkedHomeworkTemplateIds\": [\r\n        3\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -993,11 +1467,10 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-step-template/1",
+									"raw": "{{dashboard-api}}/api/protocol-step-template/1",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-step-template",
@@ -1023,11 +1496,10 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-step-template/1?homeworkTemplateId=1&homeworkTemplateId=2",
+									"raw": "{{dashboard-api}}/api/protocol-step-template/1?homeworkTemplateId=1&homeworkTemplateId=2",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-step-template",
@@ -1063,11 +1535,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-step-template/1",
+									"raw": "{{dashboard-api}}/api/protocol-step-template/1",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-step-template",
@@ -1098,12 +1569,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/api/protocol-step-template-category",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/protocol-step-template-category",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-step-template-category"
@@ -1128,17 +1597,52 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/api/protocol-step-template-category/1/children",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/protocol-step-template-category/1/children",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-step-template-category",
 										"1",
 										"children"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Step Template Categories",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"test 2\",\r\n  \"description\": \"test 2\",\r\n  \"parentCategoryId\": null,\r\n  \"responsibleUserId\": 2,\r\n  \"accountableUserId\": null,\r\n  \"consultedUserId\": null,\r\n  \"informedUserId\": null,\r\n  \"responsibleRoleId\": 2,\r\n  \"accountableRoleId\": null,\r\n  \"consultedRoleId\": null,\r\n  \"informedRoleId\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol-step-template-category",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol-step-template-category"
 									]
 								}
 							},
@@ -1165,11 +1669,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-template",
+									"raw": "{{dashboard-api}}/api/protocol-template",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-template"
@@ -1203,11 +1706,10 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-template",
+									"raw": "{{dashboard-api}}/api/protocol-template",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-template"
@@ -1233,7 +1735,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"protocol-template-1-updated\",\r\n  \"description\": \"protocol-template-1-updated\",\r\n  \"associatedStepTemplateIds\": [5,4,3,2,1]\r\n}",
+									"raw": "{\r\n    \"name\": \"New Client\",\r\n    \"description\": \"Protocol to be Assigned to a New Client\",\r\n    \"associatedStepTemplateIds\": [\r\n        1,\r\n        2,\r\n        3\r\n    ],\r\n    \"status\": \"LIVE\",\r\n    \"defaultDueByInYears\": 0,\r\n    \"defaultDueByInMonths\": 1,\r\n    \"defaultDueByInDays\": 0,\r\n    \"recurrenceTypeValue\": \"ON_COMPLETION\",\r\n    \"defaultTriggeringStatusValue\": \"COMPLETED\",\r\n    \"defaultReoccurInYears\": 0,\r\n    \"defaultReoccurInMonths\": 3,\r\n    \"defaultReoccurInDays\": 0\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1241,11 +1743,10 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-template/3",
+									"raw": "{{dashboard-api}}/api/protocol-template/3",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-template",
@@ -1271,11 +1772,10 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-template/7?stepTemplateId=16&stepTemplateId=17",
+									"raw": "{{dashboard-api}}/api/protocol-template/7?stepTemplateId=16&stepTemplateId=17",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-template",
@@ -1311,11 +1811,10 @@
 								"method": "PATCH",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-template/3/19",
+									"raw": "{{dashboard-api}}/api/protocol-template/3/19",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"protocol-template",
@@ -1342,11 +1841,39 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/protocol-template/7",
+									"raw": "{{dashboard-api}}/api/protocol-template/3",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
+									"path": [
+										"api",
+										"protocol-template",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate Protocol Template By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol-template/7",
+									"host": [
+										"{{dashboard-api}}"
+									],
 									"path": [
 										"api",
 										"protocol-template",
@@ -1355,14 +1882,9 @@
 								}
 							},
 							"response": []
-						}
-					]
-				},
-				{
-					"name": "Protocol Step Status",
-					"item": [
+						},
 						{
-							"name": "Get All Step Statuses",
+							"name": "Get All Recurrence Types",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -1377,16 +1899,43 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/api/protocol-step/status",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/protocol-template/recurrence-type",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
-										"protocol-step",
-										"status"
+										"protocol-template",
+										"recurrence-type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Template Statuses",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/protocol-template/template-status",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"protocol-template",
+										"template-status"
 									]
 								}
 							},
@@ -1413,12 +1962,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/api/homework-question/type",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/homework-question/type",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"homework-question",
@@ -1458,11 +2005,10 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/homework-template",
+									"raw": "{{dashboard-api}}/api/homework-template",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"homework-template"
@@ -1485,11 +2031,10 @@
 											}
 										},
 										"url": {
-											"raw": "{{server}}:8083/api/homework-template",
+											"raw": "{{dashboard-api}}/api/homework-template",
 											"host": [
-												"{{server}}"
+												"{{dashboard-api}}"
 											],
-											"port": "8083",
 											"path": [
 												"api",
 												"homework-template"
@@ -1575,11 +2120,10 @@
 											}
 										},
 										"url": {
-											"raw": "{{server}}:8083/api/homework-template",
+											"raw": "{{dashboard-api}}/api/homework-template",
 											"host": [
-												"{{server}}"
+												"{{dashboard-api}}"
 											],
-											"port": "8083",
 											"path": [
 												"api",
 												"homework-template"
@@ -1649,6 +2193,95 @@
 									],
 									"cookie": [],
 									"body": "Homework Template [Personal Information 2] was created successfully"
+								},
+								{
+									"name": "All Question Types",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"name\": \"Personal Information\",\r\n  \"description\": \"Gather Personal Information\",\r\n  \"isMultiResponse\": false,\r\n  \"homeworkQuestions\": [\r\n        {\r\n      \"questionAbbr\": \"Name\",\r\n      \"question\": \"What is your Name?\",\r\n      \"questionType\": \"STRING\",\r\n      \"isRequired\": true,\r\n      \"responseOptions\": [],\r\n      \"triggerProtocolCreation\": false,\r\n      \"triggeringResponse\": null,\r\n      \"triggeredProtocolId\": null\r\n    },\r\n    {\r\n      \"questionAbbr\": \"Age\",\r\n      \"question\": \"What is your Age?\",\r\n      \"questionType\": \"INTEGER\",\r\n      \"isRequired\": true,\r\n      \"responseOptions\": [],\r\n      \"triggerProtocolCreation\": false,\r\n      \"triggeringResponse\": null,\r\n      \"triggeredProtocolId\": null\r\n    },\r\n    {\r\n      \"questionAbbr\": \"Bank Account Balance\",\r\n      \"question\": \"What is your Primary Bank Account Balance?\",\r\n      \"questionType\": \"FLOAT\",\r\n      \"isRequired\": false,\r\n      \"responseOptions\": [],\r\n      \"triggerProtocolCreation\": false,\r\n      \"triggeringResponse\": null,\r\n      \"triggeredProtocolId\": null\r\n    },\r\n    {\r\n      \"questionAbbr\": \"DOBy\",\r\n      \"question\": \"What is your Date of Birth?\",\r\n      \"questionType\": \"DATE\",\r\n      \"isRequired\": true,\r\n      \"responseOptions\": [],\r\n      \"triggerProtocolCreation\": false,\r\n      \"triggeringResponse\": null,\r\n      \"triggeredProtocolId\": null\r\n    },\r\n    {\r\n      \"questionAbbr\": \"Bank Account Open Timestamp\",\r\n      \"question\": \"What date and time did you open your primary bank account?\",\r\n      \"questionType\": \"DATETIME\",\r\n      \"isRequired\": false,\r\n      \"responseOptions\": [],\r\n      \"triggerProtocolCreation\": false,\r\n      \"triggeringResponse\": null,\r\n      \"triggeredProtocolId\": null\r\n    },\r\n    {\r\n      \"questionAbbr\": \"US Resident\",\r\n      \"question\": \"Are you a US Resident?\",\r\n      \"questionType\": \"BOOLEAN\",\r\n      \"isRequired\": true,\r\n      \"responseOptions\": [],\r\n      \"triggerProtocolCreation\": false,\r\n      \"triggeringResponse\": null,\r\n      \"triggeredProtocolId\": null\r\n    },\r\n    {\r\n      \"questionAbbr\": \"Driver's License\",\r\n      \"question\": \"Please Upload your Driver's License.\",\r\n      \"questionType\": \"FILE\",\r\n      \"isRequired\": true,\r\n      \"responseOptions\": [],\r\n      \"triggerProtocolCreation\": false,\r\n      \"triggeringResponse\": null,\r\n      \"triggeredProtocolId\": null\r\n    },\r\n    {\r\n      \"questionAbbr\": \"Do you like Pizza?\",\r\n      \"question\": \"Do you like Pizza?\",\r\n      \"questionType\": \"SELECT_OPTION\",\r\n      \"isRequired\": true,\r\n      \"responseOptions\": [\r\n        {\r\n          \"response\": \"Yes\",\r\n          \"tooltip\": \"Yes you like pizza\"\r\n        },\r\n        {\r\n          \"response\": \"No\",\r\n          \"tooltip\": \"No you don't like pizza\"\r\n        }\r\n      ],\r\n      \"triggerProtocolCreation\": true,\r\n      \"triggeringResponse\": {\r\n        \"response\": \"Yes\",\r\n        \"tooltip\": \"Yes you like pizza\"\r\n      },\r\n      \"triggeredProtocolId\": 7\r\n    },\r\n    {\r\n      \"questionAbbr\": \"Tax Filing Status\",\r\n      \"question\": \"Describe your Financial Investment Profile?\",\r\n      \"questionType\": \"MULTI_SELECT_OPTION\",\r\n      \"isRequired\": true,\r\n      \"responseOptions\": [\r\n        {\r\n            \"tooltip\": \"Maverick\",\r\n            \"response\": \"Maverick\"\r\n        },\r\n        {\r\n            \"tooltip\": \"Conservative\",\r\n            \"response\": \"Conservative\"\r\n        },\r\n        {\r\n            \"tooltip\": \"Aggressive\",\r\n            \"response\": \"Aggressive\"\r\n        },\r\n        {\r\n            \"tooltip\": \"Frog-on-a-Log\",\r\n            \"response\": \"Frog-on-a-Log\"\r\n        }\r\n      ],\r\n      \"triggerProtocolCreation\": false,\r\n      \"triggeringResponse\": null,\r\n      \"triggeredProtocolId\": null\r\n    }\r\n  ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{dashboard-api}}/api/homework-template",
+											"host": [
+												"{{dashboard-api}}"
+											],
+											"path": [
+												"api",
+												"homework-template"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 Jun 2024 19:39:10 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Personal Information\",\n    \"description\": \"Gather Personal Information\",\n    \"isMultiResponse\": false,\n    \"homeworkQuestions\": {\n        \"questions\": [\n            {\n                \"questionAbbreviation\": \"Name\",\n                \"question\": \"What is your Name?\",\n                \"questionType\": \"STRING\",\n                \"isRequired\": true,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": false,\n                \"triggeringResponse\": null,\n                \"triggeredProtocol\": null\n            },\n            {\n                \"questionAbbreviation\": \"Age\",\n                \"question\": \"What is your Age?\",\n                \"questionType\": \"INTEGER\",\n                \"isRequired\": true,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": false,\n                \"triggeringResponse\": null,\n                \"triggeredProtocol\": null\n            },\n            {\n                \"questionAbbreviation\": \"Bank Account Balance\",\n                \"question\": \"What is your Primary Bank Account Balance?\",\n                \"questionType\": \"FLOAT\",\n                \"isRequired\": false,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": false,\n                \"triggeringResponse\": null,\n                \"triggeredProtocol\": null\n            },\n            {\n                \"questionAbbreviation\": \"DOBy\",\n                \"question\": \"What is your Date of Birth?\",\n                \"questionType\": \"DATE\",\n                \"isRequired\": true,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": false,\n                \"triggeringResponse\": null,\n                \"triggeredProtocol\": null\n            },\n            {\n                \"questionAbbreviation\": \"Bank Account Open Timestamp\",\n                \"question\": \"What date and time did you open your primary bank account?\",\n                \"questionType\": \"DATETIME\",\n                \"isRequired\": false,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": false,\n                \"triggeringResponse\": null,\n                \"triggeredProtocol\": null\n            },\n            {\n                \"questionAbbreviation\": \"US Resident\",\n                \"question\": \"Are you a US Resident?\",\n                \"questionType\": \"BOOLEAN\",\n                \"isRequired\": true,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": false,\n                \"triggeringResponse\": null,\n                \"triggeredProtocol\": null\n            },\n            {\n                \"questionAbbreviation\": \"Driver's License\",\n                \"question\": \"Please Upload your Driver's License.\",\n                \"questionType\": \"FILE\",\n                \"isRequired\": true,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": false,\n                \"triggeringResponse\": null,\n                \"triggeredProtocol\": null\n            },\n            {\n                \"questionAbbreviation\": \"Do you like Pizza?\",\n                \"question\": \"Do you like Pizza?\",\n                \"questionType\": \"SELECT_OPTION\",\n                \"isRequired\": true,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": true,\n                \"triggeringResponse\": {\n                    \"response\": \"Yes\",\n                    \"tooltip\": \"Yes you like pizza\"\n                },\n                \"triggeredProtocol\": {\n                    \"id\": 7,\n                    \"name\": \"Post-Purchase House Purchase\",\n                    \"description\": \"Protocol to be Assigned to Client who have just Purchased a Home\"\n                }\n            },\n            {\n                \"questionAbbreviation\": \"Tax Filing Status\",\n                \"question\": \"Describe your Financial Investment Profile?\",\n                \"questionType\": \"MULTI_SELECT_OPTION\",\n                \"isRequired\": true,\n                \"expectedHomeworkResponses\": null,\n                \"triggersProtocolCreation\": false,\n                \"triggeringResponse\": null,\n                \"triggeredProtocol\": null\n            }\n        ],\n        \"numOfQuestions\": 9\n    }\n}"
 								}
 							]
 						},
@@ -1668,11 +2301,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/homework-template",
+									"raw": "{{dashboard-api}}/api/homework-template",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"homework-template"
@@ -1697,11 +2329,77 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/homework-template/1",
+									"raw": "{{dashboard-api}}/api/homework-template/1",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
+									"path": [
+										"api",
+										"homework-template",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate Homework Templates By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/homework-template/1",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"homework-template",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Homework Template",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Employment\",\r\n    \"description\": \"Gather Employment Information\",\r\n    \"isMultiResponse\": false,\r\n    \"status\": \"LIVE\",\r\n    \"homeworkQuestionIds\": [\r\n        1,\r\n        2,\r\n        3,\r\n        4,\r\n        5,\r\n        6\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dashboard-api}}/api/homework-template/1",
+									"host": [
+										"{{dashboard-api}}"
+									],
 									"path": [
 										"api",
 										"homework-template",
@@ -1732,11 +2430,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/homework/protocol/3",
+									"raw": "{{dashboard-api}}/api/homework/protocol/3",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"homework",
@@ -1748,7 +2445,36 @@
 							"response": []
 						},
 						{
-							"name": "Get Homework By ID",
+							"name": "Deactivate Homework By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/homework/2",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"homework",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetHomework By ID",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -1763,15 +2489,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/homework/1",
+									"raw": "{{dashboard-api}}/api/homework/2",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"homework",
-										"1"
+										"2"
 									]
 								}
 							},
@@ -1802,11 +2527,10 @@
 									}
 								},
 								"url": {
-									"raw": "{{server}}:8083/api/homework/1",
+									"raw": "{{dashboard-api}}/api/homework/1",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"homework",
@@ -1842,11 +2566,10 @@
 											}
 										},
 										"url": {
-											"raw": "{{server}}:8083/api/homework/4",
+											"raw": "{{dashboard-api}}/api/homework/4",
 											"host": [
-												"{{server}}"
+												"{{dashboard-api}}"
 											],
-											"port": "8083",
 											"path": [
 												"api",
 												"homework",
@@ -1945,11 +2668,10 @@
 											}
 										},
 										"url": {
-											"raw": "{{server}}:8083/api/homework/2",
+											"raw": "{{dashboard-api}}/api/homework/2",
 											"host": [
-												"{{server}}"
+												"{{dashboard-api}}"
 											],
-											"port": "8083",
 											"path": [
 												"api",
 												"homework",
@@ -2039,11 +2761,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{server}}:8083/api/homework/account/9",
+									"raw": "{{dashboard-api}}/api/homework/account/9",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"homework",
@@ -2065,17 +2786,181 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://{{server}}:8083/api/file/homework-response/012de4a5-88ec-4286-84d3-81e836ed5a93",
-									"protocol": "http",
+									"raw": "{{dashboard-api}}/api/file/homework-response/012de4a5-88ec-4286-84d3-81e836ed5a93",
 									"host": [
-										"{{server}}"
+										"{{dashboard-api}}"
 									],
-									"port": "8083",
 									"path": [
 										"api",
 										"file",
 										"homework-response",
 										"012de4a5-88ec-4286-84d3-81e836ed5a93"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Homework Question",
+					"item": [
+						{
+							"name": "Get All Homework Questions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/homework-question",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"homework-question"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Homework Questions By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/homework-question/22",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"homework-question",
+										"22"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Homework Questions By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{dashboard-api}}/api/homework-question/22",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"homework-question",
+										"22"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Homework Questions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"homeworkQuestionId\": 22,\r\n  \"questionAbbr\": \"New Q1\",\r\n  \"question\": \"test question update\",\r\n  \"questionType\": \"SELECT_OPTION\",\r\n  \"isRequired\": true,\r\n  \"responseOptions\": [\r\n    {\r\n        \"expectedResponseId\": 14,\r\n        \"response\": \"Yes\",\r\n        \"tooltip\": \"This tooltip works.\"\r\n    },\r\n    {\r\n        \"expectedResponseId\": null,\r\n        \"response\": \"no\",\r\n        \"tooltip\": \"This tooltip works too.\"\r\n    }\r\n  ],\r\n  \"triggerProtocolCreation\": true,\r\n  \"triggeringResponse\": {\r\n    \"response\": \"no\",\r\n    \"tooltip\": \"This tooltip works too.\"\r\n  },\r\n  \"triggeredProtocolId\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dashboard-api}}/api/homework-question/22",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"homework-question",
+										"22"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Homework Questions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"questionAbbr\": \"New Q6\",\r\n  \"question\": \"test question addition 6\",\r\n  \"questionType\": \"SELECT_OPTION\",\r\n  \"isRequired\": true,\r\n  \"responseOptions\": [\r\n    {\r\n        \"response\": \"Yes\",\r\n        \"tooltip\": \"This tooltip works.\"\r\n    },\r\n    {\r\n        \"response\": \"no\",\r\n        \"tooltip\": \"This tooltip works too.\"\r\n    }\r\n  ],\r\n  \"triggerProtocolCreation\": true,\r\n  \"triggeringResponse\": {\r\n    \"response\": \"no\",\r\n    \"tooltip\": \"This tooltip works too.\"\r\n  },\r\n  \"triggeredProtocolId\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dashboard-api}}/api/homework-question",
+									"host": [
+										"{{dashboard-api}}"
+									],
+									"path": [
+										"api",
+										"homework-question"
 									]
 								}
 							},
